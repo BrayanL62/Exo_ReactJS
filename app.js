@@ -4,6 +4,9 @@ class App extends React.Component {
         text: "",
         history: []
     }
+    commentaire = [
+        {name: "", text: ""}
+    ]
 
     changeName = (event) => {
         this.setState({
@@ -19,7 +22,7 @@ class App extends React.Component {
     comment = (event) => {
         event.preventDefault();
 
-        let newComment = [...this.state.history, this.state.name, this.state.text]
+        let newComment = [...this.state.history, commentaire]
 
         this.setState({
             history: newComment
