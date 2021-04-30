@@ -1,30 +1,19 @@
 class App extends React.Component {
     state = {
-        name: "",
-        text: "",
-        comment: [],
+        comment: [
+            {name: "", text: ""}
+        ],
         commentHistory: []
-    }
-    changeName = (event) => {
-        this.setState({
-            name: event.target.value
-        })
     }
     
     changeText = (event) => {
         this.setState({
-            text: event.target.value
+            comment: [{name: event.target.value, text: event.target.value}]
         })
     }
-    
 
-    keepComment = (event) => {
+    comment = (event) => {
         event.preventDefault();
-        this.setState({
-            comment: [
-                {name: this.state.name, text: this.state.text}
-            ]
-        })
 
         let newComment = [...this.state.commentHistory, this.state.comment]
 
@@ -40,7 +29,7 @@ class App extends React.Component {
             <form method="post">
 
                 <input type="text" placeholder="Your Name"
-                onChange={this.changeName}
+                onChange={this.changeText}
                 value={this.state.comment.name} />
 
                 <textarea className="text" placeholder="Your comment"
@@ -48,7 +37,7 @@ class App extends React.Component {
                 value={this.state.comment.text}
                 ></textarea>
 
-                <input onClick={this.keepComment} 
+                <input onClick={this.comment} 
                 className="btn" type="submit" value="Comment >"/>
 
             </form>
